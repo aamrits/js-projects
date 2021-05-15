@@ -1,6 +1,8 @@
+const GET_YEAR = "June 30, 2021"; 
+
 const countDown = () => {
-  const targetDate = new Date("June 30, 2021 00:00:00").getTime();
-  const dateNow = new Date().getTime();
+  const targetDate = new Date(GET_YEAR);
+  const dateNow = new Date();
 
   const gap = targetDate - dateNow;
 
@@ -21,10 +23,18 @@ const countDown = () => {
   const getSeconds = Math.floor((gap % minute) / second);
 
   document.querySelector('#day').innerHTML = getDays;
-  document.querySelector('#hour').innerHTML = getHours;
-  document.querySelector('#minute').innerHTML = getMinutes;
-  document.querySelector('#second').innerHTML = getSeconds;
+  document.querySelector('#hour').innerHTML = formatTime(getHours);
+  document.querySelector('#minute').innerHTML = formatTime(getMinutes);
+  document.querySelector('#second').innerHTML = formatTime(getSeconds);
 
 }
 
+const formatTime = (time) => {
+  return time < 10 ? (`0${time}`) : time;
+}
+
+countDown();
+
 setInterval(countDown, 1000);
+
+
