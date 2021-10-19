@@ -39,7 +39,7 @@ body {
 .movie-release-date {
   position: absolute;
   top: 8%;
-  background-color: purple;
+  background-color: var(--yellow);
   padding: 10px;
   font-size: 1.2rem;
   color: #fff;
@@ -73,7 +73,7 @@ body {
   position: absolute;
   top: 80%;
   right: 5%;
-  background-color: purple;
+  background-color: var(--yellow);
   padding: 10px;
   font-size: 1.5rem;
   color: #fff;
@@ -98,6 +98,15 @@ body {
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: 10px;
+  color: var(--black);
+}
+
+h2 {
+  color: var(--black);
+}
+
+p {
+  color: var(--black);
 }
 
 .genre {
