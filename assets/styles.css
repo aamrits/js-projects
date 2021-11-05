@@ -139,6 +139,11 @@ h1 {
   letter-spacing: 1px;
 }
 
+.btn.btn-primary {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
+
 /* ==================================================================
 Mediaqueries
 ================================================================== */
