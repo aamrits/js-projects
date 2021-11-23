@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweet Snapshot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="snapshot">
+        <div class="tweet">
+            <div class="tweet_profile">
+                <div class="tweet_profile_img">
+                    <img src="./man.png" alt="man">
+                </div>
+                <div class="tweet_profile_name">
+                    <p class="tweet_profile_name--first" contenteditable="true">Amrit Gandhi</p>
+                    <p contenteditable="true">@aamrits</p>
+                </div>
+                <div class="tweet_logo">
+                    <img src="./twitter.png" alt="tweet">
+                </div>
+            </div>
+            <div class="tweet_text">
+                <textarea name="" id="tweet_text" maxlength="200"></textarea>
+                </textarea>
+            </div>
+            <div class="tweet_info">
+                <p>
+                   <span id="time"></span> -
+                   <span id="date"></span> 
+                </p>
+                <!-- 9:02 AM - 20 Sep, 2021 -->
+                <p id="characters">
+                    <span id="charCount">0</span> / 200
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <button onclick="capture()">Capture</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+
+    <script>
+        let charactersDiv = document.getElementById('characters');
+        let snapshot = document.getElementById('snapshot');
+        let tweet_text = document.getElementById('tweet_text');
+        let charCount = document.getElementById('charCount');
+        let time = document.getElementById('time');
+        let date = document.getElementById('date');
+
+        // capture image
+        async function capture() {
+            tweet_text.style.outline = 'none';
+            charactersDiv.style.display = 'none';
+
+            let dataUrl = await domtoimage.toJpeg(snapshot, { quality: 1 });
+            let link = document.createElement('a');
+            link.download = 'tweet.jpeg';
+            link.href = dataUrl;
+            link.click();
+        }
+
+        // check character length
+        tweet_text.addEventListener('keyup', (e) => {
+            let target = e.currentTarget;
+            let maxLength = tweet_text.getAttribute("maxlength");
+            let count = e.target.value.length;
+            charCount.innerHTML = count;
+        });
+
+        // modify styles on click
+        tweet_text.addEventListener('click', (e) => {
+            tweet_text.style.outline = ' 1px solid deepskyblue';
+            charactersDiv.style.display = 'block';
+            charCount.innerHTML = 0;
+            e.target.value = '';
+        });
+
+        // get Current Time
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+        }
+
+        // get Current Date
+        function getDate() {
+            const months = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+            let dateObj = new Date();
+            let month = dateObj.getUTCMonth() + 1;
+            let day = dateObj.getUTCDate();
+            let year = dateObj.getUTCFullYear();
+            let newDate = `${day} ${months[month]}, ${year}`;
+            return newDate;
+        }
+
+        time.innerHTML = formatAMPM(new Date());
+        date.innerHTML = getDate();
+    </script>
+</body>
+</html>

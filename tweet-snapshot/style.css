@@ -1,0 +1,161 @@
+/***
+  |----------------------------------------------------------------------------
+  | PROJECT NAME: Tweet Snapshot
+  | Author: Amrit
+  | CSS: Custom Style
+  |----------------------------------------------------------------------------  
+  
+***/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* ==================================================================
+General Styles
+================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #eeeeee;
+  --black: #424242;
+  --black-shadow: #292929;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(90deg, rgba(6,186,250,1) 0%, rgba(14,154,182,1) 100%);
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  height: 800px !important;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin-top: 1rem;
+}
+
+section {
+    height: 100vh;
+}
+
+.tweet {
+    width: 600px;
+    max-height: 250px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 12px 20px 24px;
+}
+
+.tweet_profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tweet_logo {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tweet_logo img {
+    width: 30px;
+}
+
+.tweet_profile_img {
+    flex-basis: 10%;
+}
+
+.tweet_profile_img img {
+    width: 50px;
+}
+
+.tweet_profile_name {
+    width: 90%;
+    margin-left: 8px;
+}
+
+.tweet_profile_name p {
+    color: grey;
+}
+
+.tweet_profile_name--first {
+    font-weight: 600;
+    color: #000 !important;
+}
+
+.tweet_text {
+    margin: 15px 0;
+}
+
+.tweet_text textarea {
+    width: 100%;
+    height: 100px;
+    max-height: 100px;
+    border: none;
+    resize: none;
+    padding: 4px 8px;
+    outline: 1px solid deepskyblue;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tweet_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tweet_info span {
+    color: grey;
+    font-size: 14px;
+}
+
+button {
+    position: absolute;
+    top: 70%;
+    padding: 8px 12px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: none;
+    background: #fff;
+    letter-spacing: 1px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/***
+CUSTOM SCROLLBAR
+*/
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: deepskyblue;
+    border-radius: 20px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--black);
+  }
